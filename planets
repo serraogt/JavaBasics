@@ -1,0 +1,139 @@
+public class One {
+
+	public static void main(String[] args) {
+
+		int [] diameters = {};
+import java.util.ArrayList;
+
+import java.util.Scanner;
+
+
+
+public class COMEBACK {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        ArrayList<Double> Radius = new ArrayList<Double>();
+
+        ArrayList<Double> Mass = new ArrayList<Double>();
+
+        ArrayList<String> classes = new ArrayList<String>();
+
+
+
+        double d=0;
+
+        double m=0;
+
+
+
+        while (d != -1000){
+
+            System.out.println("Enter your diameter.");
+
+            d=input.nextDouble();
+
+            if (d==-1000){
+
+                System.out.println("Shutdown");
+
+                System.out.println("");
+
+                break;
+
+            }
+
+
+
+            System.out.println("Enter your mass.");
+
+            m=input.nextDouble();
+
+
+
+            if(d>50000){
+
+                classes.add(+d+" is gas giant with the mass of "+m);
+
+            }
+
+            else if(d>5000 && d<49999){
+
+                classes.add(+d+" is terrestrial planet with the mass of "+m);
+
+            }
+
+            else if (d<5000){
+
+                classes.add(+d+" is dwarf planet with the mass of "+m);
+
+            }
+
+
+
+            d=d/2;
+
+            Radius.add(d);
+
+            Mass.add(m);
+
+
+
+        }
+
+
+
+        for (int i=0;i<classes.size();i++)
+
+            System.out.println(classes.get(i));
+
+
+
+        public static double findGravity(double radius, double mass){
+
+            double g=0;
+
+            for (int i=0;i<Radius.size();i++){
+
+                g=G* Mass.get(i)/Math.sqrt(Radius.get(i));
+
+
+
+
+
+            }
+
+         double G=6674/1000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+        }
+
+
+
+
+
+    }*/
+	}
+
+}
