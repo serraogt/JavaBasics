@@ -47,3 +47,107 @@ public class Planet {{
 	//display time
 
 }}
+
+
+
+
+
+
+	import java.util.Arrays;
+	import java.util.Scanner
+	;
+	public class Lab1_1 {
+	    public static void main(String[] args) {
+
+	        int temp;
+	        int size = 1;
+	        int lowestDiameter;
+	        int highestDiameter;
+	        int sum=0;
+	        int planetCount = 0;
+	        double averageDiameter=0.0;
+
+	        int[] diameterArray = new int[size];
+	        int[] massArray = new int[size];
+
+	        Scanner scanner=new Scanner(System.in);
+
+	        System.out.println("Please enter a diameter size or enter -1000 to quit: ");
+	        temp=scanner.nextInt();
+	        lowestDiameter = temp;
+	        highestDiameter = temp;
+
+	        int i = 0;
+
+	        while(temp != -1000) {
+	            if (temp > 0)
+	            {
+	                diameterArray[i] = temp;
+
+	                System.out.print("Enter mass for this planet: ");
+	                temp=scanner.nextInt();
+	                if (temp == -1000)
+	                {
+	                    diameterArray[i] = -1000;
+	                    break;
+	                }
+	                massArray[i] = temp;
+	                sum=sum+diameterArray[i];
+	                planetCount++;
+
+	                diameterArray = Arrays.copyOf(diameterArray, planetCount + 1);
+	                massArray = Arrays.copyOf(massArray, planetCount + 1);
+	                i++;
+
+	            } else
+	                System.out.println("It is an unidentified planet type or a wrong input. Discarded from the list.");
+
+	            System.out.println("Please enter a new diameter size: ");
+	            temp=scanner.nextInt();
+	        }
+
+
+	        for (int j = 0; j < planetCount; j++) {
+	            if (diameterArray[j] > highestDiameter && diameterArray[j] > 0) {
+	                highestDiameter = diameterArray[j];
+	            }
+
+	            if (diameterArray[j] < lowestDiameter && diameterArray[j] > 0) {
+	                lowestDiameter = diameterArray[j];
+	            }
+	        }
+
+
+	        if(lowestDiameter != -1000) { // false refers that no degree value has entered
+	            for (int j = 0; j < planetCount; j++) {
+	                System.out.println("--------------------------------------------------------");
+	                System.out.println("Diameter of the " + (j+1) + "th planet: " + diameterArray[j] + " meters.");
+
+	                if (diameterArray[j] >= 50000) {
+	                    System.out.println("The planet with " + diameterArray[j] + " m diameter is a gas giant planet.");
+	                }else if (diameterArray[j] >= 5000 && diameterArray[j] < 49999) {
+	                    System.out.println("The planet with " + diameterArray[j] + " m diameter is a terrestrial planet.");
+	                } else if (diameterArray[j] > 0 && diameterArray[j] < 5000) {
+	                    System.out.println("The planet with " + diameterArray[j] + " m diameter is a dwarf planet.");
+	                } else
+	                    System.out.println("It is an unidentified planet type or a wrong input.");
+
+	                System.out.println("Mass of the " + (j+1) + "th planet: " + massArray[j] + " kilograms.");
+
+	            }
+
+	            System.out.println("--------------------------------------------------------------------");
+	            System.out.println("The lowest diameter size for a planet is: " + lowestDiameter + " m.");
+	            System.out.println("The highest diameter size for a planet is: " + highestDiameter + " m.");
+
+	            averageDiameter = (double) sum / planetCount;  // cast from int to double
+	            System.out.println("The average diameter size for a planet is " + averageDiameter + " m.");
+	            System.out.println("--------------------------------------------------------------------");
+	        }
+	        else
+	            System.out.println("No proper input is given.");
+	    }
+	}
+
+
+
