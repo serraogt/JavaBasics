@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Two {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ArrayList<String> Path = new ArrayList<>();
+		Path.add("forward");
+		System.out.println("You enter the maze 1 forward ");
+		Scanner input = new Scanner (System.in);
+		
+		int i = 1;
+		while ( i > 0)
+		{
+			
+			System.out.print("Seçiniz: ");
+			
+			       int a = input.nextInt();
+		
+			            switch (a)
+		                  	{
+		               	case 1:
+			               	Path.add("forward");
+			               	break;
+			            case 2:
+			            	Path.add("left");
+			            	break;
+			            case 3:
+			             	Path.add("right");
+			             	break;
+			            case 4:
+			            	Path.add("back");
+			            	break;
+			            default:
+			                System.out.print(Path);
+	
+		 	
+		}
+	}
+	}}
+
+
+
+
+public class Movement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		boolean [][][][][] mazeArray = { {false,true,false,false,false}, {false,false,true,false,false}, {false,true,false,false,false}, {true,false,false,false,false}, {false,true,false,false,false} };
+		
+	
+
+}}
