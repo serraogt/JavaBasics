@@ -1,0 +1,554 @@
+import java.util.Scanner;
+
+public class Drive {
+
+	 public static void main(String[] args){
+	        Scanner userInput = new Scanner(System.in);
+	        boolean keepOnRunning = true;
+	        PaymentTransactions payment = new PaymentTransactions();
+	        Domestic d = new Domestic();
+	        International i = new International();
+
+	        System.out.println("                         ---Software Tour---");
+	        System.out.println("Choose the most suitable options to be guided to the tour that suits you best");
+	        while (keepOnRunning)
+	        //This is the loop of all the program
+	        	{
+	            int choice,choice2,choice5,choice6;
+	            String choice3,choice4,choice7,choice8;
+
+	            System.out.println("Press 1 for domestic Tours");
+	            System.out.println("Press 2 for international tours");
+	            System.out.println("Press 3 for quit");
+	            choice = userInput.nextInt();
+	            switch (choice){
+	                case 1:
+	                	//This will lead users to Domestic class
+	                    boolean runningOnCase1Loop = true;
+	                    while (runningOnCase1Loop) {
+	                        d.ShowTours();
+	                        System.out.println("Enter a number : ");
+	                        choice2 = userInput.nextInt();
+	                        d.setDecision(choice2);
+	                        choice3 = userInput.next();
+	                        if (choice3.equals("p"))
+	                        	//Otherwise it will lead you to Show Tours Screen of Domestic Class
+	                            runningOnCase1Loop= false;
+	                    }
+	                    payment.regionPayment();
+	                    break;
+	                case 2:
+	                    boolean runningOnCase2Loop = true;
+	                    while(runningOnCase2Loop) {
+	                        i.ShowInternationalTours();
+	                        System.out.println("Enter your choice:");
+	                        choice4=userInput.next();
+	                        if (choice4.equals("v")) {
+	                            i.ShowVisaTours();
+	                            choice5 = userInput.nextInt();
+	                            i.setDecisionForVisa(choice5);
+	                            choice7=userInput.next();
+	                            if (choice7.equals("p"))
+	                            	//Otherwise it will lead you to Show Tours Screen of International Class with visa
+	                            {
+	                                runningOnCase2Loop=false;
+	                            }
+
+	                        } else if (choice4.equals("n")) {
+	                            i.ShowNonVisaTours();
+	                            choice6 = userInput.nextInt();
+	                            i.setDecisionForNonVisa(choice6);
+	                            choice8=userInput.next();
+	                            if (choice8.equals("p")) 
+	                            	//Otherwise it will lead you to Show Tours Screen of International Class without visa
+	                            {
+	                                runningOnCase2Loop=false;
+	                            }
+	                        }
+	                        else {
+	                            System.out.println("Wrong choice please choose correct tours");
+	                            System.out.println();
+	                        }
+	                    }
+	                    payment.regionPayment();
+	                    break;
+	                case 3:
+	                	//Termination
+	                    System.out.println("                      ---Exiting---");
+	                    keepOnRunning = false;
+	                    break;
+	                default:
+	                	//If user presses something else
+	                    System.out.println("wrong choice !!!");
+	                    break;
+	            }
+	        }
+	    }
+	}
+
+
+
+public class Domestic {
+	 public void ShowTours() {
+	        System.out.println("\"Choose the cultural tour in domestic.\"\n" +
+	                "for Aegean tours press 1\n" +
+	                "for BlackSea tours press 2\n" +
+	                "for Mediterranean tours press 3\n" +
+	                "for Marmara tours press 4\n" +
+	                "for CentralAnatolia tours press 5\n" +
+	                "for EasternAnatolia tours press 6\n" +
+	                "for SoutheasternAnatolian tours press 7");
+	    }
+	    private int decision;
+	    //Encapsulation
+	    public void setDecision(int decision) {
+	        if (decision>=1 && decision<=7) {
+	            this.decision=decision;
+	            if (decision==1) {
+	                System.out.println(" \"There is 1 result for Aegean tours” \n" +
+	                        "\n" +
+	                        "1 - ) Pamukkale and Salda Lake Tour - 1 Night\n" +
+	                        "\n" +
+	                        "March 05 to 07, 2021 Mediterranean-Aegean Tours\n" +
+	                        "\n" +
+	                        "Salda Lake-Hierapolis-Pamukkale - Travertines - Ulubey Canyon Glass Terrace - Kuladokya-Peri Bacal...\n" +
+	                        "With Luxury Buses\n" +
+	                        "Aegean = 519 TL;\n" +
+	                        "Price per person\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+	            }
+	            else if (decision==2) {
+	                System.out.println(" \"There is 1 result for BlackSea tours.”\n" +
+	                        "\n" +
+	                        "1 - ) Black Sea Highlands and Batumi Tour;\n" +
+	                        "\n" +
+	                        "May 02 to 07, 2021 Tour Of the Black Sea Highlands and Batumi\n" +
+	                        "May 02 to 07, 2021 Black Sea Tours\n" +
+	                        "\n" +
+	                        "Early booking 50% + 18 installments\n" +
+	                        "\n" +
+	                        "Amasya-Boztepe-Atatürk Mansion-Batumi - Borçka - Storm Valley - Çamlıhemşin-Palovit Waterfall -...\n" +
+	                        "With Luxury Buses\n" +
+	                        "BlackSea = 1,189 TL (price per person)\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+	            else if (decision==3) {
+	                System.out.println(" “There is 1 result for Mediterranean tours. \"\n" +
+	                        "\n" +
+	                        "1 - ) Mediterranean Tour 6 Nights 7 Days Accommodation;\n" +
+	                        "\n" +
+	                        "May 22 to 29, 2021. Mediterranean tour from Antalya 6 Nights 7 day’s accommodation \n" +
+	                        "We Have Taken All Precautions for You\n" +
+	                        "18 Installment Options\n" +
+	                        "Mediterranean = 1,794 TL (price per person)\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+	            else if (decision==4) {
+	                System.out.println(" \"There is 1 result for Marmara tours “\n" +
+	                        "\n" +
+	                        "1 - ) Istanbul Tour 21 to 23 May, 2021 2 Nights’ Accommodation Semester Special;\n" +
+	                        "\n" +
+	                        "We Have Taken All Precautions for You\n" +
+	                        "18 Installment Options\n" +
+	                        "2 Nights with Bus 3 Days Every Friday\n" +
+	                        "Double Room per Person\n" +
+	                        "Marmara = 749 TL\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+	            else if (decision==5) {
+	                System.out.println(" \"There is 1 result for tours in CentralAnatolia.”\n" +
+	                        "\n" +
+	                        "1 - ) Eskisehir Odunpazarı Tour;\n" +
+	                        "\n" +
+	                        "January 23 to 24, 2021 Central Anatolia Tours\n" +
+	                        "\n" +
+	                        " Aviation Park-Badger Creek - Revolution Car - Waterfall Park - Kurşunlu Complex - Eskişehir-Odunp...\n" +
+	                        "150 TL discount on special statement\n" +
+	                        "With Luxury Buses\n" +
+	                        "CentralAnatolia = 389.00 TL\n" +
+	                        "Price per person\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+	            else if (decision==6) {
+	                System.out.println("\"There is 1 result for tours to EasternAnatolia.”\n" +
+	                        "\n" +
+	                        "1- ) Boutique Kars Sarıkamış Erzurum Tour;\n" +
+	                        "\n" +
+	                        "January 22 to 25, 2021 Boutique Kars Sarikamis Erzurum tour departs Istanbul with Turkish Airlines\n" +
+	                        "We Have Taken All Precautions for You\n" +
+	                        "18 Installment Options\n" +
+	                        "Double Room per Person\n" +
+	                        "EasternAnatolia = 1,539 TL\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+	            else if (decision==7) {
+	                System.out.println(" \"There is 1 result for SoutheasternAnatolian tours \n" +
+	                        "1 the result is displayed.\"\n" +
+	                        "\n" +
+	                        "1 -) Gaziantep - Sanliurfa - Mardin Tour With Plane;\n" +
+	                        "\n" +
+	                        "January 22 to 24, 2021 Gap Tours\n" +
+	                        "\n" +
+	                        " Gaziantep-Bey Quarter - Zeugma Museum - Tahmis Coffee - Halfeti - Sanliurfa-Archaeological Museum -...\n" +
+	                        "150 TL discount on special statement\n" +
+	                        "With Pegasus Airlines\n" +
+	                        "1,598 TL\n" +
+	                        "SoutheasternAnatolian = 1,598 TL;\n" +
+	                        "Price per person\n" +
+	                        "                         --- In order to go to payment transactions press p ---\n " +
+	                        "                  --- In order to go back to the beginning press anything except p ---");
+
+	            }
+
+	            }
+	        else{
+	            System.out.println("Invalid number. Please enter a number which indicated above.");
+	        }
+
+	    }
+	    public int getDecision() {
+	        return this.decision;
+	    }
+
+}
+
+
+
+
+public class International {
+
+	
+
+    public void ShowInternationalTours() {
+        System.out.println(" \"Choose the type of international tour\"\n" +
+                "\n" +
+                "For international tour which requires visa press v\n" +
+                "For international tour which does not requires visa press n\n");
+    }
+
+    public void ShowVisaTours() {
+        System.out.println("\"Choose the required Visa Tours\"\n" +
+                "For Italy press 8\n" +
+                "For Europe Group Departure Packages\n" +
+                "press 9\n");
+    }
+
+    public void ShowNonVisaTours() {
+        System.out.println("\"Choose the Visa-Free Tours\"\n" +
+                "For Ukraine tours press 10\n" +
+                "For Balkans tours press 11");
+    }
+
+    private int decision;
+     //Encapsulation
+    public void setDecisionForVisa(int decision) {
+        if (decision>=8 && decision<=9) {
+            this.decision = decision;
+            if (decision == 8) {
+                System.out.println(" \"There is 1 result for tours in Italy\"\n" +
+                        "\n" +
+                        "1-)The Best of Italy 2021\n" +
+                        "Length:11 Days\n" +
+                        "Operator:Globus\n" +
+                        "Quality:First Class\n" +
+                        "Style:Escorted\n" +
+                        "Group size:44\n" +
+                        "Start city:Rome\n" +
+                        "End city:Rome\n" +
+                        "Countries visited:Italy\n" +
+                        "View Tour\n" +
+                        "Best Price Guaranteed\n" +
+                        "Book With Flexibility\n" +
+                        "Italy= 2,879 TL;\n" +
+                        "                         --- In order to go to payment transactions press p ---\n " +
+                        "                  --- In order to go back to the beginning press anything except p ---");
+            } else if (decision == 9) {
+                System.out.println(" \"There is 1 result for tours in Europe\"\n" +
+                        "\n" +
+                        "1-)Best of Europe Group Departure Packages\n" +
+                        "15 Nights 16 Days\n" +
+                        "2N London\n" +
+                        "3N Paris\n" +
+                        "2N Amsterdam\n" +
+                        "1N Mannheim\n" +
+                        "3N Engelberg\n" +
+                        "1N Innsbruck\n" +
+                        "1N Padova\n" +
+                        "1N Pisa\n" +
+                        "1N Rome\n" +
+                        "Europe=4,320 TL;\n" +
+                        "                         --- In order to go to payment transactions press p ---\n " +
+                        "                  --- In order to go back to the beginning press anything except p ---");
+            }
+        }
+        else {
+            System.out.println("Invalid number. Please enter a number which indicated above.");
+        }
+
+
+
+    }
+    public void setDecisionForNonVisa(int decision) {
+        if (decision>=10 && decision<=11) {
+            this.decision=decision;
+            if (decision==10) {
+                System.out.println("\"There is 1 result for tours in Ukraine\"\n" +
+                        "\n" +
+                        "1-)Ukraine Tour\n" +
+                        "May 10 -May 16, 2021 Belarus - Ukraine Tour * No Visa Required\n" +
+                        "May 10 - May 16, 2021 European Tours\n" +
+                        "\n" +
+                        "\n" +
+                        "Minsk-Kiev - Lviv\n" +
+                        "With Turkish Airlines\n" +
+                        "499,00 EUR\n" +
+                        "\n" +
+                        "Price per person\n" +
+                        "Ukraine=4,545 TL ;\n" +
+                        "                         --- In order to go to payment transactions press p ---\n " +
+                        "                  --- In order to go back to the beginning press anything except p ---");
+            }
+            if (decision==11) {
+                System.out.println("\"There is 1 result for tours in Balkans\"\n" +
+                        "\n" +
+                        "Tour of Balkans\n" +
+                        "May 09 - May 16, 2021 Tour of 5 Countries in the Balkans * No Visa Required\n" +
+                        "May 09 -16 May, 2021 European Tours\n" +
+                        "\n" +
+                        "\n" +
+                        "Belgrade-Sarajevo-Podgorica-Ohrid - Skopje\n" +
+                        "With Turkish Airlines\n" +
+                        "449.00 EUR\n" +
+                        "\n" +
+                        "Price per person\n" +
+                        "Balkans = 4,090 TL\n" +
+                        "                         --- In order to go to payment transactions press p ---\n " +
+                        "                  --- In order to go back to the beginning press anything except p ---");
+            }
+
+        }
+        else {
+            System.out.println("Invalid number. Please enter a number which indicated above.");
+        }
+    }
+
+    public int getDecision() {
+        return this.decision;
+    }
+}
+
+
+import java.util.Scanner;
+
+public class PaymentTransactions {
+	    private String name;
+	    private String surname;
+	    private int Age;
+	    private long ID_No;
+	    //Encapsulated Information
+
+	    public String getName() {
+	        return name;
+	    }
+
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+
+	    public String getSurname() {
+	        return surname;
+	    }
+
+	    public void setSurname(String surname) {
+	        this.surname = surname;
+	    }
+
+	    public int getAge() {
+	        return Age;
+	    }
+
+	    public void setAge(int Age) {
+	                this.Age = Age;
+	    }
+
+	    public long getID_No() {
+	        return ID_No;
+	    }
+
+	    public void setID_No(long ID_No) {
+	        this.ID_No = ID_No;
+	    }
+
+	    //Setters and Getters
+	    
+	    public void regionPayment(){
+	        int blackSea = 1189;
+	        int marmara = 749;
+	        int centralAnatolia = 389;
+	        int easternAnatolia = 1539;
+	        int southeasternAnatolia = 1598;
+	        int mediterranean = 1794;
+	        int italy= 2879;
+	        int europe=4321;
+	        int ukraine=4545;
+	        int balkans= 4091;
+	        int sum = 0;
+	        //prices
+	        
+	        
+	        String BlackSea = "BLACKSEA";
+	        String Marmara = "MARMARA";
+	        String CentralAnatolia = "CENTRALANATOLİA";
+	        String EasternAnatolia = "EASTERNANATOLİA";
+	        String SoutheasternAnatolia = "SOUTHEASTERNANATOLİA";
+	        String Mediterranean = "MEDİTERRANEAN";
+	        String Italy = "İTALY";
+	        String Europe = "EUROPE";
+	        String Ukraine = "UKRAİNE";
+	        String Balkans = "BALKANS";
+
+	        Scanner inputData = new Scanner(System.in);
+	        boolean inWhileLoop = true;
+	while (inWhileLoop)
+      //Loop to check if users type correct or not
+		{
+	    System.out.println("Enter the region of your chosen tour.(if there is two words in the region they must be unified ");
+	    System.out.println("For Example : blacksea, centralanatolia, mediterranean.............................ukraine,balkans,europe,italy");
+	    String decision = inputData.next().toUpperCase();
+
+	    if (decision.equals(BlackSea)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * blackSea;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Marmara)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * marmara;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(CentralAnatolia)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * centralAnatolia;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(EasternAnatolia)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * easternAnatolia;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(SoutheasternAnatolia)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * southeasternAnatolia;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Mediterranean)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * mediterranean;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Italy)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * italy;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Europe)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * europe;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Ukraine)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * ukraine;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else if (decision.equals(Balkans)) {
+	        Scanner Input = new Scanner(System.in);
+	        System.out.println("Please enter the number of people");
+	        int numberOfPeople = Input.nextInt();
+	        sum = numberOfPeople * balkans;
+	        System.out.println("Total sum is = " + sum + " Tl");
+	        personLoop(numberOfPeople);
+	        inWhileLoop = false;
+	    } else {
+	        System.out.println("Please choose correct region");
+	        System.out.println();
+	    }
+	}
+	    }
+	    public void personLoop(int Input){
+	        String tempName;
+	        String tempSurname;
+	        int tempAge;
+	        long tempID_No;
+	        Scanner personInput = new Scanner(System.in);
+	        System.out.println("Please enter an information of the people who will come to the tour");
+	        for(int counter = 0 ; counter < Input ; counter++){
+	            System.out.println("Name : ");
+	            tempName = personInput.next();
+	            System.out.println("Surname : ");
+	            tempSurname = personInput.next();
+	            System.out.println("Age  : ");
+	            tempAge = personInput.nextInt();
+	            System.out.println("ID No : " );
+	            tempID_No = personInput.nextLong();
+	            setName(tempName);
+	            setSurname(tempSurname);
+	            setAge(tempAge);
+	            setID_No(tempID_No);
+	            displayMenu();
+	        }
+	        System.out.println("The number of person is : " + Input );
+	        System.out.println("Have a nice trip");
+	        System.out.println();
+	        System.out.println("                      ---Thank you for choosing us :)---");
+	        System.out.println();
+	    }
+	    public void displayMenu(){
+	        System.out.println("Name : " + getName());
+	        System.out.println("Surname : " + getSurname());
+	        System.out.println("Age : " + getAge());
+	        System.out.println("ID No : " + getID_No());
+	        System.out.println();
+	        //Display menu
+	    }
+}
+
+
